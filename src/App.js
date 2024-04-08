@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-no-undef */
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Row, Col } from "react-bootstrap"
 
 function App() {
   return (
+    // eslint-disable-next-line jsx-a11y/aria-role
     <div className="Container app-container" role="parent">
       <Row>
         <Col>
