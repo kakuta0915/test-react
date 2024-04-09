@@ -13,4 +13,9 @@ describe("Test Login Component", () => {
     const testEmail = "kakuta.com";
     expect(validateEmail(testEmail)).not.toBe(true);
   });
+  // validateEmailが正常に動作しているかをテスト (成功したらtrue)
+  test("should be succeeded on email validation", () => {
+    const testEmail = "kakuta@gmail.com";
+    expect(validateEmail(testEmail)).toBe(true);
+  });
 });
