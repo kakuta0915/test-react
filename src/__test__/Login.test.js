@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import Login, { validateEmail } from "../Login"
+import userEvent from "@testing-library/user-event";
 
 describe("Test Login Component", () => {
   test("render form with 1 button", async () => {
@@ -25,5 +26,20 @@ describe("Test Login Component", () => {
     render(<Login />);
     const password = screen.getByPlaceholderText("パスワード入力");
     expect(password).toHaveAttribute("type", "password");
+  });
+
+  // 送信できるかをテスト
+  test("should be able to submit the form", () => {
+    render(<Login />);
+    const submitButton = screen.getByTestId("submit");
+    const email = screen.getByPlaceholderText("メールアドレス入力");
+    const password = screen.getByPlaceholderText("パスワード入力");
+
+    userEvent.type(email, "kakuta@gmail.com");
+    userEvent.type(password, "kakuta0915");
+
+    userEvent.click(submitButton);
+    const userInfo = screen.getByText("kakuta@gmail.com");
+    expect(userInfo).toBeInTheDocument();
   });
 });
